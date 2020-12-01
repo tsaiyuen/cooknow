@@ -1,2 +1,20 @@
-<h1>Pages#home</h1>
-<p>Find me in app/views/pages/home.html.erb</p>
+<h1>Create your fridge!</h1>
+
+<p>List each fridge ingredients</p>
+
+<!-- @simple form -->
+<select class="js-example-basic-multiple" name="ingredients[]" multiple="multiple" style="width: 50%" >
+<!-- add loop @ingredients.each do -->
+
+  <option value="TO">Tomato</option>
+  <option value="ON">Onion</option>
+  <option value="LE">Lettuce</option>
+  <option value="AV">Avocado</option>
+
+</select>
+
+<input type="submit" class="btn btn-primary" value="Search recipes!">
+
+<br><br>
+
+<%= link_to "View fridge", fridges_path %>
