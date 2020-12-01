@@ -12,3 +12,28 @@
 // Your CSS partials
 @import "components/index";
 @import "pages/index";
+
+.banner {
+  background-size: cover;
+  background-position: center;
+  height: 500px;
+  font-size: 100px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+
+  h1 {
+    font-size: 60px;
+    font-weight: bold;
+  }
+
+  h2 {
+    font-size: 40px;
+    font-style: italic;
+  }
+
+  .banner-search {
+    font-size: 20px;
+  }
+}
