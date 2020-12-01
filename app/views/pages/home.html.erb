@@ -2,15 +2,13 @@
 
 <p>List each fridge ingredients</p>
 
-<%= simple_form_for recipes_path, method: :get do |f| %>
+<%= form_tag recipes_path, method: :get do |f| %>
   <select class="js-example-basic-multiple" name="ingredients[]" multiple="multiple" style="width: 50%" >
     <% @ingredients.each do |i| %>
       <option value=<%=i.id%>><%= i.name %></option>
     <% end %>
   </select>
-  <%= f.submit class: "btn btn-info" %>
+  <%= submit_tag "Search recipes", class: "btn btn-info" %>
 <% end %>
 
 <br><br>
-
-<%= link_to "View fridge", fridges_path %>
