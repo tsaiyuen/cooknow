@@ -2,21 +2,12 @@ class FridgesController < ApplicationController
 
   def index
     @fridges = current_user.fridges
+    @ingredients = Ingredients.all
     #@ingredients = @fridge.ingredients
   end
 
-  def new
-    @fridge = Fridge.new
-  end
-
   def create
-    @fridge = Fridge.new(fridge_params)
-    @fridge.user = current_user
-    if @fridge.save
-      redirect_to fridge_path(@fridge)
-    else
-      render "new"
-    end
+    ingredients = Ingredient.where(id: params[:ingredients])
   end
 
   def edit
