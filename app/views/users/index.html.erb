@@ -22,10 +22,17 @@
     <h2>Your saved recipes: </h2>
      <div class="saved-content">
        <% @savedrecipes.each do |i| %>
-        <ul>
-          <h2><%= link_to i.recipe.name, recipes_path %></h2>
-          <p><%=i.recipe.description%></p>
-        </ul>
+          <div class="saved-content-details">
+            <ul>
+              <h2>
+                <%= link_to i.recipe.name, recipes_path %>
+                <% if policy(i).destroy? %>
+                  <%= link_to "Delete this recipe", saved_recipe_path(i), method: :delete, data: {confirm: "Are you sure?"}, class: "btn btn-primary" %>
+                <% end %>
+              </h2>
+              <p><%=i.recipe.description%></p>
+            </ul>
+          </div>
        <% end %>
      </div>
   </div>

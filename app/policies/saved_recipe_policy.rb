@@ -10,8 +10,7 @@ class SavedRecipePolicy < ApplicationPolicy
   end
 
   def create?
-    true
-    #record.user == user
+    !user.saved_recipes.find_by(recipe_id: record.recipe_id).present?
   end
 
   def edit?
