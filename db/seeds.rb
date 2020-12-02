@@ -33,8 +33,16 @@ puts "Finished creating ingredients!"
 
 puts "Creating users..."
 user1 = User.create(email:"cynthia@gmail.com", first_name:"Cynthia", last_name:"Tong", password:"123456", phone_number: "123123")
+file1 = open('https://avatars0.githubusercontent.com/u/67703828?v=4')
+user1.photo.attach(io: file1, filename: 'some-image1.jpg')
+
 user2 = User.create(email:"taro@gmail.com", first_name:"Taro", last_name:"Tomiya", password:"123456", phone_number: "1211")
+file2 = open('https://res.cloudinary.com/wagon/image/upload/c_fill,g_face,h_200,w_200/v1602512708/wpr8u0xszuxl3kvd6l57.jpg')
+user2.photo.attach(io: file2, filename: 'some-image2.jpg')
+
 user3 = User.create(email:"ken@gmail.com", first_name:"Ken", last_name:"Wall", password:"123456", phone_number: "22222")
+file3 = open('https://avatars3.githubusercontent.com/u/51733007?v=4')
+user3.photo.attach(io: file3, filename: 'some-image3.jpg')
 puts "Finished creating user!"
 
 puts "Creating recipes..."

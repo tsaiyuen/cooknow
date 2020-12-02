@@ -1,4 +1,5 @@
 class RecipesController < ApplicationController
+  # skip_before_action :authenticate_user!, only: [:index, :show]
   def index
     if params[:ingredients].present?
       ingredients = params[:ingredients].map(&:to_i).sort

@@ -1,6 +1,6 @@
 <% if @recipes.present? %>
   <% @recipes.each do |r| %>
-    <b><%= r.name %></b>
+    <b><%= link_to r.name, recipe_path(r) %></b>
     <li><%= r.description %></li>
     <% if policy(SavedRecipe.new(recipe_id: r.id)).create? %>
       <%= link_to "Save this recipe", saved_recipes_path(saved_recipe: {recipe_id: r.id}), method: :post, class: "btn btn-primary" %>
