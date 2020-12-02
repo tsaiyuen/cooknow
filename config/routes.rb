@@ -3,4 +3,5 @@ Rails.application.routes.draw do
   root to: 'pages#home'
   resources :recipes
   resources :users, only: [:index]
+  resources :saved_recipes
 end

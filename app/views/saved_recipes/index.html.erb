@@ -1,0 +1,10 @@
+ <div class="container">
+   <div class="saved-content">
+     <% @savedrecipes.each do |i| %>
+      <ul>
+        <h2><%= link_to i.recipe.name, recipes_path %></h2>
+        <p><%=i.recipe.description%></p>
+      </ul>
+     <% end %>
+   </div>
+</div>
