@@ -1,23 +1,32 @@
-<div class="container">
-  <div class="welcome-header">
-    <h2>Welcome <b><%= current_user.first_name %>!</b></h2>
-  </div>
-  <div class="avatar-large">
-    <% if current_user.photo.attached? %>
-      <%= cl_image_tag current_user.photo.key, width: 250, height: 250, crop: :thumb, gravity: :face, radius: :max %>
-    <% end %>
-  </div>
+<div class="d-flex">
+  <div class="profile">
+    <div class="welcome-header">
+      <h2>Welcome <b><%= current_user.first_name %>!</b></h2>
+    </div>
+    <div class="avatar-profile">
+      <% if current_user.photo.attached? %>
+        <%= cl_image_tag current_user.photo.key, width: 250, height: 250, crop: :thumb, gravity: :face, radius: :max %>
+      <% end %>
+    </div>
 
-  <div>
-    <br>
-    <p>Phone: <%= current_user.phone_number %></p>
-    <p>Email: <%= current_user.email %></p>
-  </div>
+    <div>
+      <br>
+      <p>Phone: <%= current_user.phone_number %></p>
+      <p>Email: <%= current_user.email %></p>
+    </div>
 
-  <p><em><%= link_to "Edit profile", edit_user_registration_path %></em></p>
+    <p><em><%= link_to "Edit profile", edit_user_registration_path %></em></p>
+  </div>
 
   <div class="saved_recipes">
     <h2>Your saved recipes: </h2>
+     <div class="saved-content">
+       <% @savedrecipes.each do |i| %>
+        <ul>
+          <h2><%= link_to i.recipe.name, recipes_path %></h2>
+          <p><%=i.recipe.description%></p>
+        </ul>
+       <% end %>
+     </div>
   </div>
-
 </div>
