@@ -1,6 +1,6 @@
 <% if @recipes.present? %>
 <% @recipes.each do |r| %>
-  <b><%= r.name %></b>
+  <b><%= link_to r.name, recipe_path(@recipes) %></b>
   <li><%= r.description %></li>
   <% end %> 
 <% else %>

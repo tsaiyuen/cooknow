@@ -7,4 +7,7 @@ class RecipesController < ApplicationController
       redirect_to root_path, alert: "Please insert ingredients"
     end
   end
+
+  def show
+  end
 end
