@@ -1,7 +1,82 @@
-# This file should contain all the record creation needed to seed the database with its default values.
-# The data can then be loaded with the rails db:seed command (or created alongside the database with db:setup).
-#
-# Examples:
-#
-#   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
-#   Character.create(name: 'Luke', movie: movies.first)
+
+puts "Cleaning seed..."
+RecipeIngredient.destroy_all
+SavedRecipe.destroy_all
+Review.destroy_all
+Ingredient.destroy_all
+Recipe.destroy_all
+User.destroy_all
+puts "DB clean successfully"
+
+puts "Creating ingredients..."
+ingr01 = Ingredient.create(name: "potato")
+ingr02 = Ingredient.create(name: "tomato")
+ingr03 = Ingredient.create(name: "chicken")
+ingr04 = Ingredient.create(name: "lettuce")
+ingr05 = Ingredient.create(name: "tilapia")
+ingr06 = Ingredient.create(name: "mango")
+ingr07 = Ingredient.create(name: "meat")
+ingr08 = Ingredient.create(name: "onion")
+ingr09 = Ingredient.create(name: "salmon")
+ingr10 = Ingredient.create(name: "lemon")
+ingr11 = Ingredient.create(name: "capers")
+ingr12 = Ingredient.create(name: "butter")
+ingr13 = Ingredient.create(name: "salt")
+ingr14 = Ingredient.create(name: "pepper")
+ingr15 = Ingredient.create(name: "garlic")
+ingr16 = Ingredient.create(name: "milk")
+ingr17 = Ingredient.create(name: "chocolate")
+ingr18 = Ingredient.create(name: "cinnamon")
+ingr19 = Ingredient.create(name: "cheese")
+puts "Finished creating ingredients!"
+
+
+puts "Creating users..."
+user1 = User.create(email:"cynthia@gmail.com", first_name:"Cynthia", last_name:"Tong", password:"123456", phone_number: "123123")
+user2 = User.create(email:"taro@gmail.com", first_name:"Taro", last_name:"Tomiya", password:"123456", phone_number: "1211")
+user3 = User.create(email:"ken@gmail.com", first_name:"Ken", last_name:"Wall", password:"123456", phone_number: "22222")
+puts "Finished creating user!"
+
+puts "Creating recipes..."
+recipe1 = Recipe.create(name:"Tomato and soup", description:"Add tomato add potato and chicken")
+RecipeIngredient.create(recipe: recipe1, ingredient: ingr02)
+RecipeIngredient.create(recipe: recipe1, ingredient: ingr01)
+RecipeIngredient.create(recipe: recipe1, ingredient: ingr03)
+
+recipe2 = Recipe.create(name:"Potato and tilapia", description:"Add lettuce, tilapia and mango")
+RecipeIngredient.create(recipe: recipe2, ingredient: ingr04)
+RecipeIngredient.create(recipe: recipe2, ingredient: ingr05)
+RecipeIngredient.create(recipe: recipe2, ingredient: ingr06)
+
+recipe3 = Recipe.create(name:"Meat with tomato", description:"Add meat, tomato, onion")
+RecipeIngredient.create(recipe: recipe3, ingredient: ingr07)
+RecipeIngredient.create(recipe: recipe3, ingredient: ingr02)
+RecipeIngredient.create(recipe: recipe3, ingredient: ingr08)
+
+recipe4 = Recipe.create(name:"Salmon", description:"Add salmon, lemon and capers")
+RecipeIngredient.create(recipe: recipe4, ingredient: ingr09)
+RecipeIngredient.create(recipe: recipe4, ingredient: ingr10)
+RecipeIngredient.create(recipe: recipe4, ingredient: ingr11)
+
+recipe5 = Recipe.create(name:"Smashed potato", description:"potato, butter, salt, pepper, onion, garlic, milk")
+RecipeIngredient.create(recipe: recipe5, ingredient: ingr01)
+RecipeIngredient.create(recipe: recipe5, ingredient: ingr12)
+RecipeIngredient.create(recipe: recipe5, ingredient: ingr13)
+RecipeIngredient.create(recipe: recipe5, ingredient: ingr14)
+RecipeIngredient.create(recipe: recipe5, ingredient: ingr08)
+RecipeIngredient.create(recipe: recipe5, ingredient: ingr15)
+RecipeIngredient.create(recipe: recipe5, ingredient: ingr16)
+
+recipe6 = Recipe.create(name:"Chicken Pie", description:"Lots of chicken, tomato and potato")
+RecipeIngredient.create(recipe: recipe6, ingredient: ingr02)
+RecipeIngredient.create(recipe: recipe6, ingredient: ingr01)
+RecipeIngredient.create(recipe: recipe6, ingredient: ingr03)
+puts "Finished creating recipes!"
+
+puts "Creating reviews..."
+Review.create( rating: 3, comment: "very good and tasty", user: user1, recipe: recipe1 )
+Review.create( rating: 4, comment: "fast and delicious", user: user2, recipe: recipe2 )
+Review.create( rating: 2, comment: "not very good", user: user3, recipe: recipe3 )
+Review.create( rating: 3, comment: "delicious recipe", user: user1, recipe: recipe4 )
+Review.create( rating: 5, comment: "OMG the best food ever", user: user1, recipe: recipe5 )
+puts "Finished creating reviews!"
