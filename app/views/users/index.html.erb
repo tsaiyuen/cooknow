@@ -3,15 +3,21 @@
     <h2>Welcome <b><%= current_user.first_name %>!</b></h2>
   </div>
   <div class="avatar-large">
-    <h2>Avatar here</h2>
+    <% if current_user.photo.attached? %>
+      <%= cl_image_tag current_user.photo.key, width: 250, height: 250, crop: :thumb, gravity: :face, radius: :max %>
+    <% end %>
   </div>
 
-  <h2><em><%= link_to "Edit profile", edit_user_registration_path %></em></h2>
+  <div>
+    <br>
+    <p>Phone: <%= current_user.phone_number %></p>
+    <p>Email: <%= current_user.email %></p>
+  </div>
+
+  <p><em><%= link_to "Edit profile", edit_user_registration_path %></em></p>
 
   <div class="saved_recipes">
     <h2>Your saved recipes: </h2>
   </div>
-
-  <p><%= link_to "Go back to the home page", root_path %></p>
 
 </div>
