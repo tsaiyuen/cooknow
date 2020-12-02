@@ -25,6 +25,12 @@ gem 'redis', '~> 4.0'
 # gem for authorization
 gem 'pundit'
 
+# gem to send emails in production
+gem 'letter_opener', group: :development
+
+# gem for emails on heroku
+gem 'postmark-rails'
+
 # gem for image hosting
 gem 'cloudinary', '~> 1.16.0'
 
