@@ -1,4 +1,4 @@
-<div class="d-flex">
+<div class="d-flex justify-content-around align-items-center">
   <div class="profile">
     <div class="welcome-header">
       <h2>Welcome <b><%= current_user.first_name %>!</b></h2>
@@ -23,7 +23,6 @@
      <div class="saved-content">
        <% @savedrecipes.each do |i| %>
           <div class="saved-content-details">
-            <ul>
               <h2>
                 <%= link_to i.recipe.name, recipes_path %>
                 <% if policy(i).destroy? %>
@@ -31,7 +30,6 @@
                 <% end %>
               </h2>
               <p><%=i.recipe.description%></p>
-            </ul>
           </div>
        <% end %>
      </div>
