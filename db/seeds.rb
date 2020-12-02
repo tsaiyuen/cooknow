@@ -11,14 +11,16 @@ require 'open-uri'
 Ingredient.destroy_all
 
 url = "https://www.bbcgoodfood.com/search/recipes"
-
 html_file = open(url).read
 html_doc = Nokogiri::HTML(html_file)
+
+Recipe.create()
 
 # parse recipe titles and URLs
 html_doc.search('.standard-card-new__article-title').each do |element|
   title = element.text.strip
-  food_link = element.attribute('href').value
+  Recipe.name << title
+  # food_link = element.attribute('href').value
 end
 
 #parse descriptions
@@ -36,7 +38,7 @@ end
 
 # Parse Photo
 html_doc.search('.img-container__image img-fluid').each do |element|
-  image = element.text.strip
+  image = element.strip
 end
 # <img class="img-container__image img-fluid" src="https://images.immediate.co.uk/production/volatile/sites/30/2020/07/keffir-8900695.jpg?quality=45&amp;resize=504,458" title="Homemade kefir recipe" alt="Milk kefir in glasses on a board" height="458" width="504" srcset=" https://images.immediate.co.uk/production/volatile/sites/30/2020/07/keffir-8900695.jpg?quality=45&amp;resize=2400,2180 2400w, https://images.immediate.co.uk/production/volatile/sites/30/2020/07/keffir-8900695.jpg?quality=45&amp;resize=1920,1744 1920w, https://images.immediate.co.uk/production/volatile/sites/30/2020/07/keffir-8900695.jpg?quality=45&amp;resize=1440,1308 1440w, https://images.immediate.co.uk/production/volatile/sites/30/2020/07/keffir-8900695.jpg?quality=45&amp;resize=1200,1090 1200w, https://images.immediate.co.uk/production/volatile/sites/30/2020/07/keffir-8900695.jpg?quality=90&amp;resize=960,872 960w, https://images.immediate.co.uk/production/volatile/sites/30/2020/07/keffir-8900695.jpg?quality=90&amp;resize=720,654 720w, https://images.immediate.co.uk/production/volatile/sites/30/2020/07/keffir-8900695.jpg?quality=90&amp;resize=576,523 576w, https://images.immediate.co.uk/production/volatile/sites/30/2020/07/keffir-8900695.jpg?quality=90&amp;resize=360,327 360w, https://images.immediate.co.uk/production/volatile/sites/30/2020/07/keffir-8900695.jpg?quality=90&amp;resize=180,163 180w," sizes="(min-width: 992px) 300px, (min-width: 768px) 230px, (min-width: 576px) 268px, (min-width: 544px) 50vw, 100vw">
 
@@ -45,7 +47,7 @@ food_link.each do | url |
   html_file = open(url).read
   html_doc = Nokogiri::HTML(html_file)
   
-  html_doc.search('.list li .list-item').each do |element|
+  html_doc.search('.list > li > .list-item').each do |element|
     ingredients = element.text.strip
   end
 end
