@@ -1,19 +1,35 @@
-<div class="d-flex flex-wrap justify-content-around">
-  <% if @recipes.present? %>
-    <% @recipes.each do |r| %>
-      <div class="recipe-card">
-        <b><%= link_to r.name, recipe_path(r, ingredients: params[:ingredients]) %></b>
-        <li><%= r.description %></li>
-        <% if user_signed_in? %>
-          <% if policy(SavedRecipe.new(recipe_id: r.id)).create? %>
-            <%= link_to "Save this recipe", saved_recipes_path(saved_recipe: {recipe_id: r.id}), method: :post, class: "btn btn-primary" %>
-          <% end %>
-        <% end %>
+<div class="grid-controls">
+  <div class="grid-control filter">
+    <input type="text" name="inputtest" id="testinput">
+    <!--<div class="dropdown">
+      <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+        Food type
+      </button>
+      <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
       </div>
-    <% end %>
-  <% else %>
-    Sorry, we can't find a recipe with the listed ingredients.
+    </div>-->
+  </div>
+</div>
+
+<div class="grid">
+  <% if @recipes.present? %>
+     <% @recipes.each do |r| %>
+       <div class="item <%= r.name.split(' ').first %>" data-type=<% r.name.split(' ').first %>>
+         <div class="item-content">
+            <b><%= link_to r.name, recipe_path(r, ingredients: params[:ingredients]) %></b>
+            <li><%= r.description %></li>
+            <% if user_signed_in? %>
+              <% if policy(SavedRecipe.new(recipe_id: r.id)).create? %>
+                <%= link_to "Save this recipe", saved_recipes_path(saved_recipe: {recipe_id: r.id}), method: :post, class: "btn btn-primary" %>
+              <% end %>
+            <% end %>
+          </div>
+        </div>
+      <% end %>
+    <% else %>
+      Sorry, we can't find a recipe with the listed ingredients.
   <% end %>
 </div>
 
-<p><%= link_to "Go back to the home page", root_path %></p>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/web-animations/2.3.2/web-animations.min.js"></script>
+<script src="https://cdn.jsdelivr.net/gh/haltu/muuri@0.9.3/dist/muuri.min.js"></script>
