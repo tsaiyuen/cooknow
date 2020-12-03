@@ -8,9 +8,11 @@
     "@rails/webpacker": "4.3.0",
     "bootstrap": "^4.5.3",
     "jquery": "^3.5.1",
+    "muuri": "^0.9.3",
     "popper.js": "^1.16.1",
     "select2": "^4.0.13",
-    "turbolinks": "^5.2.0"
+    "turbolinks": "^5.2.0",
+    "web-animations-js": "^2.3.2"
   },
   "version": "0.1.0",
   "devDependencies": {
