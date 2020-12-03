@@ -94,3 +94,4 @@ Review.create( rating: 4, comment: "Niiiceee", user: user2, recipe: recipe5 )
 Review.create( rating: 5, comment: "I loved it", user: user1, recipe: recipe6 )
 Review.create( rating: 3, comment: "Difficult recipe", user: user3, recipe: recipe6 )
 puts "Finished creating reviews!"
+# end
