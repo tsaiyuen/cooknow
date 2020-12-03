@@ -1,1 +1,26 @@
 <h1>test!</h1>
+
+<h2>Reviews</h2>
+
+<div class="d-flex flex-wrap">
+  <% @recipe.reviews.each do |review| %>
+    <div class="card" style="width: 33%;">
+      <p> Rating: <%= review.rating %> / 5 </p>
+      <p> <%= review.comment %> </p>
+      <div class="avatar-profile">
+        <% if review.photo.attached? %>
+          <%= cl_image_tag review.photo.key, width: 100, height: 100, crop: :fill %>
+        <% end %>
+      </div>
+      <% if policy(review).destroy? %>
+        <%= link_to "Delete this review", recipe_path(review), method: :delete, data: {confirm: "Are you sure?"}, class: "btn btn-primary" %>
+      <% end %>
+    </div>
+  <% end %>
+</div>
+
+<% if user_signed_in? %>
+  <p><%= link_to "Add a review", new_recipe_review_path(@recipe) %></p>
+<% else %>
+  <p><%= "Sign in to leave a review" %></p>
+<% end %>

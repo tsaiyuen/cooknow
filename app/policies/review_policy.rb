@@ -6,11 +6,11 @@ class ReviewPolicy < ApplicationPolicy
   end
 
   def new?
-    create?
+    true
   end
 
   def create?
-    record.user == user
+    true
   end
 
   def edit?
