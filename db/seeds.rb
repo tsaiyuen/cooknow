@@ -83,8 +83,15 @@ puts "Finished creating recipes!"
 
 puts "Creating reviews..."
 Review.create( rating: 3, comment: "very good and tasty", user: user1, recipe: recipe1 )
+Review.create( rating: 5, comment: "the best one!", user: user3, recipe: recipe1 )
 Review.create( rating: 4, comment: "fast and delicious", user: user2, recipe: recipe2 )
+Review.create( rating: 5, comment: "just perfect!", user: user1, recipe: recipe2 )
 Review.create( rating: 2, comment: "not very good", user: user3, recipe: recipe3 )
+Review.create( rating: 5, comment: "really liked this one", user: user2, recipe: recipe3 )
 Review.create( rating: 3, comment: "delicious recipe", user: user1, recipe: recipe4 )
+Review.create( rating: 5, comment: "Yes! The best", user: user1, recipe: recipe4 )
 Review.create( rating: 5, comment: "OMG the best food ever", user: user1, recipe: recipe5 )
+Review.create( rating: 4, comment: "Niiiceee", user: user2, recipe: recipe5 )
+Review.create( rating: 5, comment: "I loved it", user: user1, recipe: recipe6 )
+Review.create( rating: 3, comment: "Difficult recipe", user: user3, recipe: recipe6 )
 puts "Finished creating reviews!"
