@@ -1,1 +1,13 @@
-<h1>test!</h1>
+<h1> <%= @recipe.name %> </h1>
+<%= @recipe.description %>
+
+<h2>Reviews</h2>
+<div>
+<% @recipe.reviews.each do |rv| %>
+  <p> Made by: <%= rv.user.first_name %> <%= rv.user.last_name %></p>
+  <p> Rating: <%= rv.rating %> </p>
+  <p> Comment: <%= rv.comment %></p>
+</div>
+<% end %>
+
+<p><%= link_to "Go back to recipes", recipes_path(@recipes) %></p>
