@@ -1,5 +1,6 @@
 <%# if @recipes.present? %>
   <% @recipes.each do |r| %>
+  <div>
     <b><%= link_to r.name, recipe_path(r) %></b>
     <li><%= r.description %></li>
     <% if user_signed_in? %>
@@ -7,6 +8,7 @@
       <%= link_to "Save this recipe", saved_recipes_path(saved_recipe: {recipe_id: r.id}), method: :post, class: "btn btn-primary" %>
     <% end %>
     <% end %>
+  </div>
   <% end %>
 <%# else %>
   Sorry, we can't find a recipe with the listed ingredients.
