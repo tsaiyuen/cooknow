@@ -13,4 +13,11 @@ class RecipesController < ApplicationController
     @recipe = Recipe.find(params[:id])
     @reviews = @recipe.reviews
   end
+
+  def destroy
+    @review = Review.find(params[:id])
+    authorize @review
+    @review.destroy
+    redirect_to recipes_path
+  end
 end

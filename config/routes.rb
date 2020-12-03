@@ -2,7 +2,7 @@ Rails.application.routes.draw do
   devise_for :users
   root to: 'pages#home'
   resources :recipes do
-    resources :reviews, only: [:index, :new, :create]
+    resources :reviews
   end
   resources :users, only: [:index]
   resources :saved_recipes

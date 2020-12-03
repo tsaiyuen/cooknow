@@ -1,6 +1,7 @@
 <%= simple_form_for [@recipe, @review] do |f| %>
   <%= f.input :rating %>
   <%= f.input :comment %>
+  <%= f.input :photo, as: :file %>
   <%= f.submit class: "btn btn-info" %>
 <% end %>
 
