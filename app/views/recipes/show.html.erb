@@ -6,7 +6,7 @@
 <div class="d-flex flex-wrap">
   <% @recipe.reviews.each do |review| %>
     <div class="card" style="width: 33%;">
-      <p> Made by: <%= rv.user.first_name %> <%= rv.user.last_name %></p>
+      <p> Made by: <%= review.user.first_name %> <%= review.user.last_name %></p>
       <p> Rating: <%= review.rating %> / 5 </p>
       <p> <%= review.comment %> </p>
       <div class="avatar-profile">
@@ -22,11 +22,11 @@
   <% end %>
 </div>
 
-<% if user_signed_in? %>
-  <p><%= link_to "Add a review", new_recipe_review_path(@recipe) %></p>
+<% if user_signed_in?%>
+    <p><%= link_to "Add a review", new_recipe_review_path(@recipe) %></p>
 <% else %>
   <p><%= "Sign in to leave a review" %></p>
 <% end %>
 
-<p><%= link_to "Go back to recipes", recipes_path(@recipe) %></p>
+<p><%= link_to "Go back to recipes", recipes_path(ingredients: params[:ingredients]) %></p>
 
