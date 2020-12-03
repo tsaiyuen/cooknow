@@ -16,11 +16,13 @@
      <% @recipes.each do |r| %>
        <div class="item <%= r.name.split(' ').first %>" data-type=<% r.name.split(' ').first %>>
          <div class="item-content">
-            <b><%= link_to r.name, recipe_path(r) %></b>
-              <li><%= r.description %></li>
+            <b><%= link_to r.name, recipe_path(r, ingredients: params[:ingredients]) %></b>
+            <li><%= r.description %></li>
+            <% if user_signed_in? %>
               <% if policy(SavedRecipe.new(recipe_id: r.id)).create? %>
                 <%= link_to "Save this recipe", saved_recipes_path(saved_recipe: {recipe_id: r.id}), method: :post, class: "btn btn-primary" %>
               <% end %>
+            <% end %>
           </div>
         </div>
       <% end %>
