@@ -1,1 +1,15 @@
 <h1>test!</h1>
+
+<h2>Reviews</h2>
+<% @recipe.reviews.each do |review| %>
+  <div class="card">
+    <p> <%= review.rating %> </p>
+    <p> <%= review.comment %> </p>
+  </div>
+<% end %>
+
+<% if user_signed_in? %>
+  <p><%= link_to "Add a review", new_recipe_review_path(@recipe) %></p>
+<% else %>
+  <p><%= "Sign in to leave a review" %></p>
+<% end %>

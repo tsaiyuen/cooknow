@@ -1,0 +1,7 @@
+<%= simple_form_for [@recipe, @review] do |f| %>
+  <%= f.input :rating %>
+  <%= f.input :comment %>
+  <%= f.submit class: "btn btn-info" %>
+<% end %>
+
+  <%= link_to "Back", recipes_path, class: "btn btn-primary" %>
