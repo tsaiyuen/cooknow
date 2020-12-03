@@ -1,4 +1,5 @@
 class RecipesController < ApplicationController
+  # skip_before_action :authenticate_user!, only: [:index, :show]
   def index
     if params[:ingredients].present?
       ingredients = params[:ingredients].map(&:to_i).sort
@@ -6,5 +7,17 @@ class RecipesController < ApplicationController
     else
       redirect_to root_path, alert: "Please insert ingredients"
     end
+  end
+
+  def show
+    @recipe = Recipe.find(params[:id])
+    @reviews = @recipe.reviews
+  end
+
+  def destroy
+    @review = Review.find(params[:id])
+    authorize @review
+    @review.destroy
+    redirect_to recipes_path
   end
 end
