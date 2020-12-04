@@ -1,3 +1,4 @@
+
 require 'uri'
 require 'json'
 require 'net/http'
@@ -31,7 +32,5 @@ api_res["results"].each do |recipe|
   ingName = ingredient["ingredient"]["name"]
   Ingredient.create(name: ingName)
  end
- # recipe["sections"].each do |ingName|
-   # puts ingName["ingredient"]
-  #end
 end
+

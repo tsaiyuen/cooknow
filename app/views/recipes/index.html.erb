@@ -1,7 +1,7 @@
 <div class="grid-controls">
   <div class="grid-control filter">
-    <input type="text" name="inputtest" id="testinput">
-    <!--<div class="dropdown">
+    <!--<input type="text" name="inputtest" id="testinput">
+    <div class="dropdown">
       <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
         Food type
       </button>
@@ -29,7 +29,9 @@
     <% else %>
       Sorry, we can't find a recipe with the listed ingredients.
   <% end %>
+<p><%= link_to "Go back to home", root_path %></p>
 </div>
+
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/web-animations/2.3.2/web-animations.min.js"></script>
 <script src="https://cdn.jsdelivr.net/gh/haltu/muuri@0.9.3/dist/muuri.min.js"></script>
