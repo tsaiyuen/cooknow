@@ -18,6 +18,6 @@ class RecipesController < ApplicationController
     @review = Review.find(params[:id])
     authorize @review
     @review.destroy
-    redirect_to recipes_path
+    redirect_to recipe_path(@review.recipe)
   end
 end
