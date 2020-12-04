@@ -24,7 +24,7 @@
        <% @savedrecipes.each do |i| %>
           <div class="saved-content-details">
               <h2>
-                <%= link_to i.recipe.name, recipe_path(i) %>
+                <%= link_to i.recipe.name, recipe_path(i.recipe_id) %>
                 <% if policy(i).destroy? %>
                   <%= link_to "Delete this recipe", saved_recipe_path(i), method: :delete, data: {confirm: "Are you sure?"}, class: "btn btn-primary" %>
                 <% end %>
