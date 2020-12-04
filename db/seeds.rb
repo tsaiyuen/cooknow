@@ -11,7 +11,6 @@ http.use_ssl = true
 http.verify_mode = OpenSSL::SSL::VERIFY_NONE
 
 request = Net::HTTP::Get.new(url)
-request["x-rapidapi-key"] = '0050c034aemsh3c3e3443da30cb3p164106jsnecd905e6c535'
 request["x-rapidapi-host"] = 'tasty.p.rapidapi.com'
 
 response = http.request(request)
