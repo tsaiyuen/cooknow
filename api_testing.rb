@@ -2,6 +2,7 @@ require 'uri'
 require 'json'
 require 'net/http'
 require 'openssl'
+require 'byebug'
 
 url = URI("https://tasty.p.rapidapi.com/recipes/list?from=0&size=20&tags=under_30_minutes")
 
@@ -15,13 +16,16 @@ request["x-rapidapi-host"] = 'tasty.p.rapidapi.com'
 
 response = http.request(request)
 api_res = JSON.parse(response.read_body)
+instructions_arr = []
 
 api_res["results"].each do |recipe|
-  recipe.each do |key, value|
     hash = {}
-    value["instructions"].each_with_index do |instruction, index|
+    #byebug
+    next if recipe["instructions"].nil?
+    recipe["instructions"].each_with_index do |instruction, index|
       hash[index.to_s] = instruction["display_text"]
     end
-  end
   instructions_arr << hash
 end
+
+puts instructions_arr
