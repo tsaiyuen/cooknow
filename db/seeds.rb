@@ -1,10 +1,12 @@
 puts "Cleaning seed..."
+
 RecipeIngredient.destroy_all
 SavedRecipe.destroy_all
 Review.destroy_all
 Ingredient.destroy_all
 Recipe.destroy_all
 User.destroy_all
+
 puts "DB clean successfully"
 puts "Creating ingredients..."
 ingr01 = Ingredient.create(name: "potato")
