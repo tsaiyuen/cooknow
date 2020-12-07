@@ -12,6 +12,8 @@ class RecipesController < ApplicationController
   def show
     @recipe = Recipe.find(params[:id])
     @reviews = @recipe.reviews
+    @rating = @reviews.average(:rating).to_i
+    @detailed_rating = @reviews.average(:rating)
   end
 
   def destroy
