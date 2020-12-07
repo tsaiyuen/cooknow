@@ -1,5 +1,7 @@
 <h1> <%= @recipe.name %> </h1>
 <%= @recipe.description %>
+<%= image_tag @recipe.photo.key, height: 600, width: 800, crop: :fill %>
+
 
 <div>
   <% if user_signed_in? %>
