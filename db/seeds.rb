@@ -23,7 +23,6 @@ http.verify_mode = OpenSSL::SSL::VERIFY_NONE
 
 request = Net::HTTP::Get.new(url)
 request["x-rapidapi-host"] = 'tasty.p.rapidapi.com'
-request["x-rapidapi-key"] = '0050c034aemsh3c3e3443da30cb3p164106jsnecd905e6c535'
 
 response = http.request(request)
 api_res = JSON.parse(response.read_body)
@@ -53,7 +52,6 @@ api_res["results"].each do |recipe|
   # puts ourIngredient.name
  end
 end
-
 
 #puts "Creating users..."
 #user1 = User.create(email:"cynthia@gmail.com", first_name:"Cynthia", last_name:"Tong", password:"123456", phone_number: "123123")
