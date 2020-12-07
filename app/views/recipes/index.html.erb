@@ -26,6 +26,8 @@
          <div class="item-content">
             <b><%= link_to r.name, recipe_path(r, ingredients: params[:ingredients]) %></b>
             <li><%= r.description %></li>
+            <%# inserting image from API.  %>
+            <%#= image_tag @recipe.image, height: 300, width: 400, crop: :fill %>
             <% if user_signed_in? %>
               <% if policy(SavedRecipe.new(recipe_id: r.id)).create? %>
                 <%= link_to "Save this recipe", saved_recipes_path(saved_recipe: {recipe_id: r.id}), method: :post, class: "btn btn-primary" %>
