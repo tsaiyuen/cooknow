@@ -20,7 +20,7 @@ instructions_arr = []
 
 api_res["results"].each do |recipe|
     hash = {}
-    #byebug
+    byebug
     next if recipe["instructions"].nil?
     recipe["instructions"].each_with_index do |instruction, index|
       hash[index.to_s] = instruction["display_text"]
@@ -28,4 +28,4 @@ api_res["results"].each do |recipe|
   instructions_arr << hash
 end
 
-puts instructions_arr
+
