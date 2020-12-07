@@ -1,8 +1,15 @@
 <h1> <%= @recipe.name %> </h1>
 <%= @recipe.description %>
 
-<h2>Reviews</h2>
+<div>
+  <% if user_signed_in? %>
+    <% if policy(SavedRecipe.new(recipe_id: @recipe.id)).create? %>
+      <%= link_to "Save this recipe", saved_recipes_path(saved_recipe: {recipe_id: @recipe.id}), method: :post, class: "btn btn-primary" %>
+    <% end %>
+  <% end %>
+</div>
 
+<h2>Reviews</h2>
 <div class="d-flex flex-wrap">
   <% @recipe.reviews.each do |review| %>
     <div class="card" style="width: 33%;">
@@ -39,6 +46,9 @@
     </a>
     <a href="mailto:?Subject=Check out this recipe from the Cook Now Club!&amp;Body=I%20saw%20this%20and%20thought%20of%20you!%20 https://cooknow.club/recipes/<%= @recipe.id %>">
       <i class="fas fa-envelope"></i>
+    </a>
+    <a href="whatsapp://send?text=Check out this amazing recipe I found on Cook Now! https://cooknow.club/recipes/<%= @recipe.id %>" data-action="share/whatsapp/share">
+      <i class="fab fa-whatsapp"></i>
     </a>
   </div>
 </div>
