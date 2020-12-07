@@ -15,7 +15,7 @@ User.destroy_all
 
 puts "DB clean successfully"
 # comment for purposes of commiting
-url = URI("https://tasty.p.rapidapi.com/recipes/list?from=0&size=10&tags=under_30_minutes")
+url = URI("https://tasty.p.rapidapi.com/recipes/list?from=0&tags=under_30_minutes")
 
 http = Net::HTTP.new(url.host, url.port)
 http.use_ssl = true
@@ -23,35 +23,49 @@ http.verify_mode = OpenSSL::SSL::VERIFY_NONE
 
 request = Net::HTTP::Get.new(url)
 request["x-rapidapi-host"] = 'tasty.p.rapidapi.com'
+request["x-rapidapi-key"] = ENV["RAPIDAPI_KEY"]
 
 response = http.request(request)
 api_res = JSON.parse(response.read_body)
 
 # we will need to include recipes loop within this loop, so that ingredients also belong to their parent recipes
 api_res["results"].each do |recipe|
+  puts "Creating recipes..."
   name = recipe["name"]
   description = recipe["description"]
   image = recipe["thumbnail_url"]
   ourRecipe = Recipe.create(name: name, description: description, image: image)
-  #puts ourRecipe.name
-  api_res["results"].each do |recipe|
-    next if recipe["sections"].nil?
-    recipe["sections"][0]["components"].each do |ingredient|
-     ingName = ingredient["ingredient"]["name"]
-     recIng = RecipeIngredient.create(recipe: ourRecipe, ingredient: ingName)
-     # puts ourIngredient.name
-    end
-   end
+  puts ourRecipe.name
+  puts ourRecipe.description
+
+  next if recipe["sections"].nil?
+
+  recipe["sections"][0]["components"].each do |ingredient|
+    puts "creating ingredient"
+    ingName = ingredient["ingredient"]["name"]
+    puts ingName
+
+    puts "creating our ingredient"
+    ourIngredient = Ingredient.where(name: ingName).first
+    if ourIngredient.nil?
+      ourIngredient = Ingredient.create(name: ingName)
+    end  
+    puts ourIngredient
+    
+    puts "creating our recIng"
+    recIng = RecipeIngredient.create(recipe: ourRecipe, ingredient: ourIngredient)
+  end
+ 
 end
 
-api_res["results"].each do |recipe|
- next if recipe["sections"].nil?
- recipe["sections"][0]["components"].each do |ingredient|
-  ingName = ingredient["ingredient"]["name"]
-  ourIngredient = Ingredient.create(name: ingName)
-  # puts ourIngredient.name
- end
-end
+#api_res["results"].each do |recipe|
+# next if recipe["sections"].nil?
+# recipe["sections"][0]["components"].each do |ingredient|
+#  ingName = ingredient["ingredient"]["name"]
+#  ourIngredient = Ingredient.create(name: ingName)
+#  # puts ourIngredient.name
+# end
+#end
 
 #puts "Creating users..."
 #user1 = User.create(email:"cynthia@gmail.com", first_name:"Cynthia", last_name:"Tong", password:"123456", phone_number: "123123")
