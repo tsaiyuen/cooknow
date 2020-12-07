@@ -14,7 +14,7 @@ Recipe.destroy_all
 User.destroy_all
 
 puts "DB clean successfully"
-
+# comment for purposes of commiting
 url = URI("https://tasty.p.rapidapi.com/recipes/list?from=0&size=10&tags=under_30_minutes")
 
 http = Net::HTTP.new(url.host, url.port)
