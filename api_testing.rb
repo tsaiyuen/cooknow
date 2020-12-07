@@ -11,21 +11,22 @@ http.use_ssl = true
 http.verify_mode = OpenSSL::SSL::VERIFY_NONE
 
 request = Net::HTTP::Get.new(url)
-request["x-rapidapi-key"] = '0050c034aemsh3c3e3443da30cb3p164106jsnecd905e6c535'
 request["x-rapidapi-host"] = 'tasty.p.rapidapi.com'
 
 response = http.request(request)
 api_res = JSON.parse(response.read_body)
-instructions_arr = []
 
 api_res["results"].each do |recipe|
-    hash = {}
-    #byebug
-    next if recipe["instructions"].nil?
-    recipe["instructions"].each_with_index do |instruction, index|
-      hash[index.to_s] = instruction["display_text"]
-    end
-  instructions_arr << hash
+  name = recipe["name"]
+  description = recipe["description"]
+  Recipe.create(name: name, description: description)
 end
 
-puts instructions_arr
+api_res["results"].each do |recipe|
+ #puts recipe["sections"][0]["components"]#[0]#["ingredient"]#["name"]
+ next if recipe["sections"].nil?
+ recipe["sections"][0]["components"].each do |ingredient|
+  ingName = ingredient["ingredient"]["name"]
+  Ingredient.create(name: ingName)
+ end
+end
