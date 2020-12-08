@@ -1,37 +1,57 @@
-<div class="d-flex justify-content-around align-items-center">
+<div class="d-flex justify-content-center align-items-center profile-banner">
   <div class="profile">
-    <div class="welcome-header">
-      <h2>Welcome <b><%= current_user.first_name %>!</b></h2>
-    </div>
     <div class="avatar-profile">
       <% if current_user.photo.attached? %>
         <%= cl_image_tag current_user.photo.key, width: 250, height: 250, crop: :thumb, gravity: :face, radius: :max %>
       <% end %>
     </div>
+    <div class="welcome-header">
+      <h2><b><%= current_user.first_name %></b></h2>
+    </div>
+  </div>
+
+</div>
+
+<div class="d-flex justify-content-around justify-content-start">
+
+  <div class="profile-info">
+    <h2>
+      Basic information
+      <%= link_to edit_user_registration_path do %>
+        <i class="fas fa-edit"></i>
+      <% end %>
+    </h2>
 
     <div>
-      <br>
-      <p>Phone: <%= current_user.phone_number %></p>
-      <p>Email: <%= current_user.email %></p>
+      <div class="detail-box">
+        <p><b>Full name</b> <%= current_user.first_name %> <%= current_user.last_name %></p>
+      </div>
+      <div class="detail-box">
+        <p><b>Phone</b> <%= current_user.phone_number %></p>
+      </div>
+      <div class="detail-box">
+        <p><b>Email Address</b> <%= current_user.email %></p>
+      </div>
     </div>
 
-    <p><em><%= link_to "Edit profile", edit_user_registration_path %></em></p>
   </div>
 
   <div class="saved_recipes">
     <h2>Your saved recipes: </h2>
      <div class="saved-content">
        <% @savedrecipes.each do |i| %>
-          <div class="saved-content-details">
-              <h2>
-                <%= link_to i.recipe.name, recipe_path(i.recipe_id) %>
+          <div class="saved-content-details detail-box">
+              <p><%= link_to i.recipe.name, recipe_path(i.recipe_id) %></p>
+              <p>
                 <% if policy(i).destroy? %>
-                  <%= link_to "Delete this recipe", saved_recipe_path(i), method: :delete, data: {confirm: "Are you sure?"}, class: "btn btn-primary" %>
+                  <%= link_to saved_recipe_path(i), method: :delete, data: {confirm: "Are you sure?"}, class: "btn btn-primary" do %>
+                    <i class="fas fa-trash-alt"></i>
+                  <% end %>
                 <% end %>
-              </h2>
-              <p><%=i.recipe.description%></p>
+              </p>
           </div>
        <% end %>
      </div>
   </div>
+
 </div>
