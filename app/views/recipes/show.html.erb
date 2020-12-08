@@ -41,26 +41,38 @@
     </div>
 
     <div class="recipe-details-image">
-    <%= image_tag @recipe.image, height: 300, width: 500, crop: :fill %>
+       <% if @recipe.image %>
+        <%= image_tag @recipe.image, height: 500, width: 667, crop: :fill %>
+        <% end %>
     </div>
   </div>
+
 
   <div class="reviews-container">
     <h2>Reviews</h2>
 
     <div class="review-summary">
       Average Review:
+      <% if @detailed_rating.present?%>
       <% @rating.times do %>
         <i class="fas fa-star"></i>
       <% end %>
       (<%= @detailed_rating %> / 5 stars)
+    <% else %>
+      <p><em>Not yet reviewed<em></p>
+    <% end %>
     </div>
 
     <div class="d-flex flex-wrap">
       <% @recipe.reviews.each do |review| %>
         <div class="review-card">
+          <div class="review-card-image">
+           <% if review.photo.attached? %>
+             <%= cl_image_tag review.photo.key, width: 300, height: 200, crop: :fill %>
+           <% end %>
+          </div>
           <div class="review-card-details">
-            <p> <%= review.user.first_name %> <%= review.user.last_name %></p>
+            <p>By: <%= review.user.first_name %> <%= review.user.last_name %></p>
             <p>
               <% review.rating.times do %>
                 <i class="fas fa-star"></i>
@@ -68,17 +80,13 @@
             </p>
             <p> <%= review.comment %> </p>
           </div>
-          <div class="review-card-image">
-            <% if review.photo.attached? %>
-              <%= cl_image_tag review.photo.key, width: 100, height: 100, crop: :fill %>
+          <div class="review-card-delete">
+            <% if policy(review).destroy? %>
+              <%= link_to recipe_path(review), method: :delete, data: {confirm: "Are you sure?"} do %>
+                <i class="fas fa-trash-alt"></i>
+              <% end %>
             <% end %>
           </div>
-
-          <% if policy(review).destroy? %>
-            <%= link_to recipe_path(review), method: :delete, data: {confirm: "Are you sure?"} do %>
-              <i class="fas fa-trash-alt"></i>
-            <% end %>
-          <% end %>
 
         </div>
       <% end %>
