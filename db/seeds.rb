@@ -33,7 +33,9 @@ api_res["results"].each do |recipe|
   name = recipe["name"]
   description = recipe["description"]
   image = recipe["thumbnail_url"]
-  ourRecipe = Recipe.create(name: name, description: description, image: image)
+  video_url = recipe["original_video_url"]
+  ourRecipe = Recipe.create(name: name, description: description, image: image, video_url: video_url)
+  
   puts ourRecipe.name
   puts ourRecipe.description
 

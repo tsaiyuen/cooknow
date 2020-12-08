@@ -14,13 +14,19 @@
       </div>
     </div>
   </div>
-
+  
+  <div>
+    <video width="900" height="900" controls>
+    <source src=<%= @recipe.video_url %> type="video/mp4">
+    </video>
+  </div>
+  
   <div class="d-flex recipe-details-container">
     <div class="recipe-details-description">
       <%= @recipe.description %>
     </div>
     <div class="recipe-details-image">
-      <%# <%= image_tag @recipe.image, height: 600, width: 800, crop: :fill %>
+    <%= image_tag @recipe.image, height: 600, width: 800, crop: :fill %>
     </div>
   </div>
 
