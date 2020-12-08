@@ -1,0 +1,27 @@
+.welcome-header {
+  text-align: center;
+  color: white;
+}
+
+.detail-box {
+  border: 1px solid grey;
+  background-color: white;
+  margin: 2px;
+  vertical-align: middle;
+}
+
+.saved-content-details {
+  display: flex;
+  flex-direction: column;
+  margin: 25px;
+}
+
+.saved-content-name {
+  font-size: 20px;
+  font-weight: bold;
+  padding-left: 10px;
+}
+
+.saved-content-delete {
+  text-align: right;
+}

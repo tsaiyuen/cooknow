@@ -1,0 +1,40 @@
+.header-recipes, .recipe-details-container {
+  margin-bottom: 10px;
+  padding-bottom: 10px;
+  border-bottom: 2px solid darkgrey;
+}
+
+.recipes-container {
+  width: 80%;
+  margin: auto;
+  padding-top: 15px;
+}
+
+.review-card {
+  width: 45%;
+  border: 1px solid grey;
+  background-color: white;
+  margin: 2px;
+  vertical-align: middle;
+  display: flex;
+  flex-direction: column;
+  margin: 25px;
+}
+
+.review-card-image {
+  text-align: center;
+}
+
+.review-card-details {
+  text-align: center;
+}
+
+.review-card-delete {
+  text-align: right;
+}
+
+.header-functions {
+  display: flex;
+  align-items: center;
+}
+
