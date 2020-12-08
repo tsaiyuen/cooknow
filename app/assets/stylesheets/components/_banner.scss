@@ -9,7 +9,7 @@
   color: white;
 
   h1 {
-    font-size: 60px;
+    font-size: 70px;
     font-weight: bold;
     text-shadow: 2px 2px #000000;
   }
@@ -23,4 +23,11 @@
   .banner-search {
     font-size: 20px;
   }
+}
+
+.profile-banner {
+  background-image: url('https://images.unsplash.com/photo-1466637574441-749b8f19452f?ixlib=rb-1.2.1&ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&auto=format&fit=crop&w=2428&q=80');
+  background-size: cover;
+  background-position: center;
+  height: 300px;
 }
