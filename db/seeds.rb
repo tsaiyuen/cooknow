@@ -63,7 +63,6 @@ api_res["results"].each do |recipe|
     puts "creating our Recipe Ingredient"
     recIng = RecipeIngredient.create(recipe: ourRecipe, ingredient: ourIngredient)
   end
-  binding.pry
  
 end
 
