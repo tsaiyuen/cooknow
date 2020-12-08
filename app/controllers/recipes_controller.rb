@@ -18,6 +18,7 @@ class RecipesController < ApplicationController
     @recipe = Recipe.find(params[:id])
     @reviews = @recipe.reviews
     @rating = @reviews.average(:rating).to_i
+    
     if @reviews.present?
       @detailed_rating = @reviews.average(:rating).round(2)
     else
