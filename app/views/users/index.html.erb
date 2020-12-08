@@ -2,7 +2,7 @@
   <div class="profile">
     <div class="avatar-profile">
       <% if current_user.photo.attached? %>
-        <%= cl_image_tag current_user.photo.key, width: 250, height: 250, crop: :thumb, gravity: :face, radius: :max %>
+        <%= cl_image_tag current_user.photo.key, width: 200, height: 200, crop: :fill, gravity: :face %>
       <% end %>
     </div>
     <div class="welcome-header">
@@ -12,9 +12,9 @@
 
 </div>
 
-<div class="d-flex justify-content-around justify-content-start">
+<div class="d-flex justify-content-start">
 
-  <div class="profile-info">
+  <div class="profile-info col-4">
     <h2>
       Basic information
       <%= link_to edit_user_registration_path do %>
@@ -36,19 +36,25 @@
 
   </div>
 
-  <div class="saved_recipes">
-    <h2>Your saved recipes: </h2>
-     <div class="saved-content">
+  <div class="saved_recipes col-8">
+    <h2>Saved recipes:</h2>
+    <p><em><%= pluralize(@savedrecipes.count, 'Recipe') %></em></p>
+     <div class="d-flex flex-wrap">
        <% @savedrecipes.each do |i| %>
           <div class="saved-content-details detail-box">
-              <p><%= link_to i.recipe.name, recipe_path(i.recipe_id) %></p>
-              <p>
+              <% if i.recipe.image %>
+                <%= image_tag i.recipe.image, height: 250, width: 333, crop: :fill %>
+              <% end %>
+              <div class="saved-content-name">
+                <%= link_to i.recipe.name, recipe_path(i.recipe_id) %>
+              </div>
+              <div class="saved-content-delete">
                 <% if policy(i).destroy? %>
                   <%= link_to saved_recipe_path(i), method: :delete, data: {confirm: "Are you sure?"}, class: "btn btn-primary" do %>
                     <i class="fas fa-trash-alt"></i>
                   <% end %>
                 <% end %>
-              </p>
+              </div>
           </div>
        <% end %>
      </div>
