@@ -1,6 +1,6 @@
 <h1> <%= @recipe.name %> </h1>
 <%= @recipe.description %>
-<%= image_tag @recipe.image, height: 600, width: 800, crop: :fill %>
+<%# <%= image_tag @recipe.image, height: 600, width: 800, crop: :fill %>
 
 
 <div>
@@ -15,11 +15,13 @@
 
 <div class=review-summary>
   Average Review:
-  <% @rating.times do %>
-    <i class="fas fa-star"></i>
-  <% end %>
-
-  (<%= @detailed_rating %> / 5 stars)
+    <% if @rating.present?%>
+      <% @rating.times do %>
+        <i class="fas fa-star"></i>
+      <% end %>
+      (<%= @detailed_rating %> / 5 stars)
+    <% else %>
+    <% end %>
 </div>
 
 <div class="d-flex flex-wrap">
