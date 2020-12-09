@@ -18,6 +18,7 @@
   <div class="recipe-index-found">
     <p><%= pluralize(@recipes.length, 'Recipe') %> Found</p>
   </div>
+  <div class="recipe-item-container">
   <% if @recipes.present? %>
      <% @recipes.each do |r| %>
          <div class="item-content">
@@ -32,7 +33,9 @@
               <div class="item-content-save">
                 <% if user_signed_in? %>
                   <% if policy(SavedRecipe.new(recipe_id: r.id)).create? %>
-                    <%= button_to "<i class="far fa-bookmark"></i> Save this recipe", saved_recipes_path(saved_recipe: {recipe_id: r.id}), method: :post, class: 'btn btn-info' %>
+                    <%= link_to saved_recipes_path(saved_recipe: {recipe_id: r.id}), method: :post, class: 'btn btn-danger' do %>
+                      <i class="far fa-bookmark"> Save this recipe</i>
+                    <% end %>
                   <% end %>
                 <% end %>
               </div>
@@ -43,9 +46,10 @@
     <% else %>
       Sorry, no recipes found.
   <% end %>
+  </div>
 </div>
 
-<div class="footer-index">
+<div class="footer">
   <div class="return-link">
     <%= link_to "Go back to home", root_path %>
   </div>
