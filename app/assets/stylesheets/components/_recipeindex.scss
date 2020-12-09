@@ -6,7 +6,7 @@
   vertical-align: middle;
   display: flex;
   flex-direction: column;
-  margin: 25px;
+  margin: 15px;
 }
 
 .item-content-card {
@@ -30,7 +30,7 @@
 }
 
 .item-content-details {
-  padding-left: 25px;
+  padding-left: 20px;
   padding-top: 5px;
 }
 
@@ -44,7 +44,12 @@
 
 .recipe-index-found {
   margin-top: 15px;
-  margin-left: 25px;
+  margin-left: 15px;
   font-weight: bold;
   color: $red;
+}
+
+.recipe-item-container {
+  display: flex;
+  flex-wrap: wrap;
 }
