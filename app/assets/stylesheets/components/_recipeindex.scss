@@ -1,0 +1,50 @@
+.item-content {
+  width: 402px;
+  border: 1px solid grey;
+  background-color: white;
+  margin: 2px;
+  vertical-align: middle;
+  display: flex;
+  flex-direction: column;
+  margin: 25px;
+}
+
+.item-content-card {
+  box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+  transition: 0.3s;
+}
+
+.item-content-card:hover {
+  box-shadow: 0 12px 20px 0 rgba(0,0,0,0.2);
+}
+
+.item-content-image {
+  text-align: center;
+  background-size: cover;
+  background-position: center;
+}
+
+.item-content-bottom {
+  display: flex;
+  justify-content: space-between;
+}
+
+.item-content-details {
+  padding-left: 25px;
+  padding-top: 5px;
+}
+
+.recipe-index-search {
+  display: flex;
+}
+
+.recipe-index-search-form {
+  flex-grow: 1;
+}
+
+.recipe-index-found {
+  margin-top: 15px;
+  margin-left: 25px;
+  font-weight: bold;
+  color: $red;
+}

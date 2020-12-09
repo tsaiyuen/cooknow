@@ -3,10 +3,12 @@
   height: 40px;
   border-radius: 50%;
   object-fit: cover;
+  background: transparent;
 }
 .avatar-large {
   width: 56px;
   border-radius: 50%;
+  background: transparent;
 }
 .avatar-bordered {
   width: 40px;
@@ -20,3 +22,12 @@
   box-shadow: 0 1px 2px rgba(0,0,0,0.2);
   border: white 1px solid;
 }
+
+.avatar-profile {
+  border: 2px solid lightgrey;
+  box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+  transition: 0.3s;
+}
+
+
+

@@ -1,47 +1,57 @@
-<div class="grid-controls">
-  <div class="grid-control filter d-flex">
-    <input type="text" name="ingredientinput" id="searchinput">
-    <!--<input type="text" name="inputtest" id="testinput">
-    <div class="dropdown">
-      <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-        Cuisine
-      </button>
-      <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-        <option value="" disabled selected>Choose your cuisine</option>
-        <option value="american">American</option>
-        <option value="brazilian">Brazilian</option>
-        <option value="chinese">Chinese</option>
-        <option value="french">French</option>
-        <option value="japanese">Japanese</option>
-        <option value="chicken">Chicken</option>
-      </div>
-    </div>-->
+<div class="recipe-index-search">
+  <div class="recipe-index-search-form">
+  <%= form_tag recipes_path(), method: :get do %>
+    <%= text_field_tag :query,
+      params[:query],
+      class: "form-control",
+      placeholder: "Filter by name or description of the recipe"
+    %>
+    <%= hidden_field_tag "ingredients[]", @ingredients %>
   </div>
+  <div class="recipe-index-search-submit">
+    <%= submit_tag "Search", class: "btn btn-info" %>
+  </div>
+  <% end %>
 </div>
 
-<div class="grid">
+<div class="recipes-index-container">
+  <div class="recipe-index-found">
+    <p><%= pluralize(@recipes.length, 'Recipe') %> Found</p>
+  </div>
   <% if @recipes.present? %>
      <% @recipes.each do |r| %>
-       <div class="item <%= r.name.split(' ').first %>" data-type=<% r.name.split(' ').first %>>
          <div class="item-content">
-            <b><%= link_to r.name, recipe_path(r, ingredients: params[:ingredients]) %></b>
-            <li><%= r.description %></li>
-            <%# inserting image from API.  %>
-            <%= image_tag r.image, height: 300, width: 400, crop: :fill %>
-            <% if user_signed_in? %>
-              <% if policy(SavedRecipe.new(recipe_id: r.id)).create? %>
-                <%= link_to "Save this recipe", saved_recipes_path(saved_recipe: {recipe_id: r.id}), method: :post, class: "btn btn-primary" %>
-              <% end %>
-            <% end %>
+          <div class="item-content-card">
+            <div class="item-content-image">
+              <%= image_tag r.image, height: 300, width: 400, crop: :fill %>
+            </div>
+            <div class="item-content-bottom">
+              <div class="item-content-details">
+                <b><%= link_to r.name, recipe_path(r, ingredients: params[:ingredients]) %></b>
+              </div>
+              <div class="item-content-save">
+                <% if user_signed_in? %>
+                  <% if policy(SavedRecipe.new(recipe_id: r.id)).create? %>
+                    <%= link_to "Save this recipe", saved_recipes_path(saved_recipe: {recipe_id: r.id}), method: :post, class: "btn btn-danger" %>
+                  <% end %>
+                <% end %>
+              </div>
+            </div>
           </div>
         </div>
       <% end %>
     <% else %>
-      Sorry, we can't find a recipe with the listed ingredients.
+      Sorry, no recipes found.
   <% end %>
-<p><%= link_to "Go back to home", root_path %></p>
 </div>
 
-
-<script src="https://cdnjs.cloudflare.com/ajax/libs/web-animations/2.3.2/web-animations.min.js"></script>
-<script src="https://cdn.jsdelivr.net/gh/haltu/muuri@0.9.3/dist/muuri.min.js"></script>
+<div class="footer-index">
+  <div class="return-link">
+    <%= link_to "Go back to home", root_path %>
+  </div>
+  <div class="footer-links">
+  </div>
+  <div class="footer-copyright">
+    These recipes are sourced from <a href="https://tasty.co/">Tasty</a>
+  </div>
+</div>
