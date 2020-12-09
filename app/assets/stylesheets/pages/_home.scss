@@ -23,6 +23,10 @@
   justify-content: center;
 }
 
+.carImg {
+  max-height: 450px;
+}
+
 .words {
   background-image: url("https://media.giphy.com/media/GIh3i0ds2RnOaNhXMT/giphy.gif");
   background-clip: text;
@@ -60,11 +64,7 @@ transition: 2s;
 @keyframes blink-caret {
   from, to { border-color: transparent }
   50% { border-color: orange; }
-}
-
-.fas {
-  color: white;
-}
+}                                                                                                                                                                                                                                                          
 
 .inform {
   text-align: center;
@@ -116,6 +116,9 @@ transition: 2s;
  .recipe-images {
   flex: 50%;
   height: 100%;
+  max-width: 100%;
+  max-height: 100%;
+  object-fit: contain;
   background: yellow;
 } 
 
@@ -124,6 +127,7 @@ transition: 2s;
  // height: 100%;
  max-width: 100%;
  max-height: 100%;
+ object-fit: contain;
 }
 
 .search-input {
