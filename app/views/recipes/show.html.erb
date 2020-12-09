@@ -9,7 +9,9 @@
         <div class="save-button">
           <% if user_signed_in? %>
             <% if policy(SavedRecipe.new(recipe_id: @recipe.id)).create? %>
-              <%= link_to "Save this recipe", saved_recipes_path(saved_recipe: {recipe_id: @recipe.id}), method: :post, class: "btn btn-danger" %>
+              <%= link_to saved_recipes_path(saved_recipe: {recipe_id: @recipe.id}), method: :post, class: 'btn btn-danger' do %>
+                 <i class="far fa-bookmark"> Save this recipe</i>
+               <% end %>
             <% end %>
           <% end %>
         </div>
