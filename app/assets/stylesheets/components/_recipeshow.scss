@@ -1,7 +1,12 @@
-.header-recipes, .recipe-details-container {
+.header-recipes, .recipe-details-container, .recipe-description-container {
   margin-bottom: 10px;
   padding-bottom: 10px;
   border-bottom: 2px solid darkgrey;
+}
+
+.header-container {
+  display: flex;
+  justify-content: space-between;
 }
 
 .recipes-container {
@@ -10,8 +15,36 @@
   padding-top: 15px;
 }
 
+.recipe-details-description {
+  margin-right: 30px;
+}
+
+.share-buttons {
+  border-bottom: 2px solid darkgrey;
+  margin-bottom: 10px;
+  font-size: 30px;
+  display: flex;
+}
+
+.share-button:hover {
+  box-shadow: 0 12px 20px 0 rgba(0,0,0,0.2);
+}
+
+.share-buttons-icons {
+  display: flex;
+  justify-content: space-around;
+  a {
+    color: $red;
+  }
+}
+
+.recipe-video {
+  display: flex;
+  align-items: center;
+}
+
 .review-card {
-  width: 45%;
+  width: 452px;
   border: 1px solid grey;
   background-color: white;
   margin: 2px;
@@ -19,6 +52,12 @@
   display: flex;
   flex-direction: column;
   margin: 25px;
+  box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+  transition: 0.3s;
+}
+
+.review-card:hover {
+  box-shadow: 0 12px 20px 0 rgba(0,0,0,0.2);
 }
 
 .review-card-image {
@@ -36,5 +75,10 @@
 .header-functions {
   display: flex;
   align-items: center;
+}
+
+.reviews-button {
+  display: flex;
+  justify-content: space-between;
 }
 

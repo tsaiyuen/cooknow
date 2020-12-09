@@ -9,12 +9,15 @@
     <%= hidden_field_tag "ingredients[]", @ingredients %>
   </div>
   <div class="recipe-index-search-submit">
-    <%= submit_tag "Search", class: "btn btn-primary" %>
+    <%= submit_tag "Search", class: "btn btn-info" %>
   </div>
   <% end %>
 </div>
 
 <div class="recipes-index-container">
+  <div class="recipe-index-found">
+    <p><%= pluralize(@recipes.length, 'Recipe') %> Found</p>
+  </div>
   <% if @recipes.present? %>
      <% @recipes.each do |r| %>
          <div class="item-content">
@@ -29,7 +32,7 @@
               <div class="item-content-save">
                 <% if user_signed_in? %>
                   <% if policy(SavedRecipe.new(recipe_id: r.id)).create? %>
-                    <%= link_to "Save this recipe", saved_recipes_path(saved_recipe: {recipe_id: r.id}), method: :post, class: "btn btn-primary" %>
+                    <%= link_to "Save this recipe", saved_recipes_path(saved_recipe: {recipe_id: r.id}), method: :post, class: "btn btn-danger" %>
                   <% end %>
                 <% end %>
               </div>
@@ -40,5 +43,15 @@
     <% else %>
       Sorry, no recipes found.
   <% end %>
-<p><%= link_to "Go back to home", root_path %></p>
+</div>
+
+<div class="footer-index">
+  <div class="return-link">
+    <%= link_to "Go back to home", root_path %>
+  </div>
+  <div class="footer-links">
+  </div>
+  <div class="footer-copyright">
+    These recipes are sourced from <a href="https://tasty.co/">Tasty</a>
+  </div>
 </div>
