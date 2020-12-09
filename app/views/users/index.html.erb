@@ -51,7 +51,7 @@
               <div class="saved-content-delete">
                 <% if policy(i).destroy? %>
                   <%= link_to saved_recipe_path(i), method: :delete, data: {confirm: "Are you sure?"}, class: "btn btn-body-color" do %>
-                    <i class="fas fa-trash-alt"></i>
+                    <i class="fas fa-bookmark"></i>
                   <% end %>
                 <% end %>
               </div>
