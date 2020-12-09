@@ -28,11 +28,10 @@ import "bootstrap";
 // Internal imports, e.g:
 // import { initSelect2 } from '../components/init_select2';
 import { initSelect2 } from '../components/init_select2';
-import { muuri } from '../components/muuri';
+//import { muuri } from '../components/muuri';
 import { initStarRating } from '../plugins/init_star_rating';
 
 document.addEventListener('turbolinks:load', () => {
   initStarRating();
   initSelect2();
-  muuri();
 });

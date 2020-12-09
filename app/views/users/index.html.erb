@@ -6,7 +6,7 @@
       <% end %>
     </div>
     <div class="welcome-header">
-      <h2><b><%= current_user.first_name %></b></h2>
+      <h2><b>Chef <%= current_user.first_name %></b></h2>
     </div>
   </div>
 
@@ -17,7 +17,7 @@
   <div class="profile-info col-4">
     <h2>
       Basic information
-      <%= link_to edit_user_registration_path do %>
+      <%= link_to edit_user_registration_path, class: "btn btn-body-color" do %>
         <i class="fas fa-edit"></i>
       <% end %>
     </h2>
@@ -50,7 +50,7 @@
               </div>
               <div class="saved-content-delete">
                 <% if policy(i).destroy? %>
-                  <%= link_to saved_recipe_path(i), method: :delete, data: {confirm: "Are you sure?"}, class: "btn btn-primary" do %>
+                  <%= link_to saved_recipe_path(i), method: :delete, data: {confirm: "Are you sure?"}, class: "btn btn-body-color" do %>
                     <i class="fas fa-trash-alt"></i>
                   <% end %>
                 <% end %>
