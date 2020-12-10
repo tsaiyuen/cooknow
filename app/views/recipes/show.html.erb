@@ -84,7 +84,7 @@
       Average Review:
       <% if @detailed_rating.present?%>
       <% @rating.times do %>
-        <i class="fas fa-star"></i>
+        <i class="fas fa-lemon"></i>
       <% end %>
       (<%= @detailed_rating %> / 5 stars)
     <% else %>
@@ -104,7 +104,7 @@
             <p>By: <%= review.user.first_name %> <%= review.user.last_name %></p>
             <p>
               <% review.rating.times do %>
-                <i class="fas fa-star"></i>
+                <i class="fas fa-lemon"></i>
               <% end %>
             </p>
             <p> <%= review.comment %> </p>

@@ -6,7 +6,7 @@
   height: 60px;
   padding: 0px 50px;
   color: rgba(0,0,0,0.3);
-  position: absolute;
+  position: relative;
   bottom: 0;
   width: 100%;
 }
@@ -24,4 +24,18 @@
 }
 .footer-links a:hover {
   opacity: 1;
+}
+
+.footer-index {
+  background: #F6EEDF;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 60px;
+  padding: 0px 50px;
+  color: rgba(0,0,0,0.3);
+  position: relative;
+  bottom: 0;
+  overflow: hidden;
+  width: 100%;
 }
