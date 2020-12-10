@@ -1,16 +1,92 @@
-  <div class="banner" style="background-image: url('https://images.unsplash.com/photo-1466637574441-749b8f19452f?ixlib=rb-1.2.1&ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&auto=format&fit=crop&w=2428&q=80')">
-    <div class="banner-title">
-      <h1>Let's cook now!</h1>
-       <h2>What's in your fridge?</h2>
-      <div class="banner-search">
-        <%= form_tag recipes_path, method: :get do |f| %>
-          <select class="js-example-theme-multiple" name="ingredients[]" multiple="multiple" style="width: 70%" >
-          <% @ingredients.each do |i| %>
-            <option value=<%=i.id%>><%= i.name %></option>
-          <% end %>
-          </select>
-          <%= submit_tag "Search recipes", class: "btn btn-info" %>
-        <% end %>
+<%# 
+  <div class="banner" style="background-image: url('https://images.unsplash.com/photo-1466637574441-749b8f19452f?ixlib=rb-1.2.1&ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&auto=format&fit=crop&w=2428&q=80')"> %>
+ 
+<div class="home-container">
+
+  <div class="col1">
+    <div class="words">
+      <h1 class='cooknow'>
+        cook<br>
+        now<br>
+        club<br>
+      </h1>
+    </div>
+  </div>
+
+  <div class="col2">
+    <div id="carouselExampleSlidesOnly" class="carousel slide" data-ride="carousel">
+      <div class="carousel-inner">
+       <div class="carousel-item active">
+          <img class='carImg' src=<%= asset_path("pan.svg") %>>
+       </div>
+       <div class="carousel-item">
+       <%# another div with background image %>
+          <img class='carImg' src=<%= asset_path("pot.svg") %>>
+       </div>
+       <div class="carousel-item">
+          <img class='carImg' src=<%= asset_path("grill.svg") %>>
+       </div>
       </div>
     </div>
   </div>
+</div>
+
+<h1 class='inform'>How Does It Work?</h1>
+
+<div class="info-container">
+  <div class="info-box">
+    <i class="far fa-plus-square fa-4x"></i>
+    <p style="text-align: center;">tell us which ingredients<br>you have</p>
+  </div>
+  <div class="info-box">
+    <i class="fas fa-search fa-4x"></i>
+    <p style="text-align: center;">browse amazing recipes<br>from all over the web</p>
+  </div>
+  <div class="info-box">
+    <i class="far fa-thumbs-up fa-4x"></i>
+   <p style="text-align: center;">find a meal you like<br>and get cooking!</p>
+  </div>
+
+</div>
+
+<div class="recipe-container">
+  <div class="recipe-search">
+    <div class="recipe-images">
+      <div id="carouselExampleSlidesOnly" class="carousel slide" data-ride="carousel">
+        <div class="carousel-inner">
+          <div class="carousel-item active">
+            <img src=<%= asset_path("food3.jpg") %> class='recipe-img'>
+          </div>
+          <div class="carousel-item">
+            <img src=<%= asset_path("food3.jpg") %> class='recipe-img'>
+          </div>
+          <div class="carousel-item">
+            <img src=<%= asset_path("food3.jpg") %> class='recipe-img'>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="search-input">
+      <h2 class='ubuntu'>Which Ingredients<br>Do You Have?</h2>
+        <%# <div class="banner-search"> %>
+          <%= form_tag recipes_path, method: :get do |f| %>
+          <select class="js-example-theme-multiple" name="ingredients[]" multiple="multiple" style="width: 100%; margin-bottom: 2vh;" >
+            <% @ingredients.each do |i| %>
+            <option value=<%=i.id%>><%= i.name %></option>
+            <% end %>
+          </select>
+            <%= submit_tag "Search recipes", class: "btn btn-info btn-black" %>
+          <% end %>   
+        <%# </div> %>
+  </div>
+</div>
+
+
+<%#= link_to "Profile", users_path %>
+<%#= link_to "Log out", destroy_user_session_path, method: :delete %>
+
+<%# 1. fixes to banner (sizing)
+2. ensure navbar works
+3. find more hi-res food images w/dark backgrounds
+4. fix fonts
+5. spacing on search div  %>

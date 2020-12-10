@@ -2,11 +2,10 @@
   width: 402px;
   border: 1px solid grey;
   background-color: white;
-  margin: 2px;
   vertical-align: middle;
   display: flex;
   flex-direction: column;
-  margin: 15px;
+  margin: 15px 15px;
 }
 
 .item-content-card {
@@ -32,6 +31,7 @@
 .item-content-details {
   padding-left: 20px;
   padding-top: 5px;
+  color: black;
 }
 
 .recipe-index-search {
