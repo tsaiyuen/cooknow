@@ -124,7 +124,7 @@
 </div>
 <div class="footer">
   <div class="return-link">
-    <%= link_to "Go back to recipes", recipes_path(ingredients: params[:ingredients]) %>
+    <%= link_to "Go back to recipes", recipes_path(ingredients: @recipe.ingredient_ids) %>
   </div>
   <div class="footer-links">
   </div>
