@@ -4,10 +4,31 @@
 }
 
 .detail-box {
-  border: 1px solid grey;
-  background-color: white;
+  background-color: transparent;
   margin: 2px;
   vertical-align: middle;
+}
+
+.body-container {
+  margin-top: 100px;
+  width: 100%;
+  display: flex;
+  justify-content: space-around;
+}
+
+.saved_recipes {
+  background: $yellow;
+  padding: 10px 15px;
+  box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+  margin-bottom: 15px;
+  min-height: 300px;
+}
+
+.profile-info {
+  background: $yellow;
+  height: 300px;
+  padding: 10px 15px;
+  box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
 }
 
 .saved-content-details {
@@ -16,24 +37,20 @@
   margin: 25px;
   box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
   transition: 0.3s;
+  background: $cream;
 }
 
 .saved-content-details:hover {
   box-shadow: 0 12px 20px 0 rgba(0,0,0,0.2);
 }
 
-
 .saved-content-name {
   font-size: 20px;
   font-weight: bold;
   padding-left: 10px;
-  font-color: red;
+  color: red;
 }
 
 .saved-content-delete {
   text-align: right;
-}
-
-a {
-
 }
