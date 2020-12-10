@@ -1,4 +1,7 @@
-<div class="d-flex justify-content-center align-items-center profile-banner">
+<div class="profile-banner">
+  <div class="greeting">
+    <h1 style="color: white; font-size: 5rem; padding-bottom: 50px;">greetings</h1>
+  </div>
   <div class="profile">
     <div class="avatar-profile">
       <% if current_user.photo.attached? %>
@@ -7,14 +10,14 @@
     </div>
     <div class="welcome-header">
       <h2><b>Chef <%= current_user.first_name %></b></h2>
+      <img src=<%= asset_path("knife.svg") %> class='recipe-img' style="height: 165px; transform: rotate(-135deg);margin-top: -100px; position: relative; top: 30px;">
     </div>
   </div>
 
 </div>
 
-<div class="d-flex justify-content-start">
-
-  <div class="profile-info col-4">
+<div class="body-container">
+  <div class="profile-info">
     <h2>
       Basic information
       <%= link_to edit_user_registration_path, class: "btn btn-body-color" do %>
@@ -36,7 +39,7 @@
 
   </div>
 
-  <div class="saved_recipes col-8">
+  <div class="saved_recipes">
     <h2>Saved recipes:</h2>
     <p><em><%= pluralize(@savedrecipes.count, 'Recipe') %></em></p>
      <div class="d-flex flex-wrap">
@@ -59,5 +62,4 @@
        <% end %>
      </div>
   </div>
-
 </div>
