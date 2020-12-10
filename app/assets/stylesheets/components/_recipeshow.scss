@@ -17,6 +17,12 @@
 
 .recipe-details-description {
   margin-right: 30px;
+  display: flex;
+}
+
+.recipe-sub {
+  display: flex;
+  flex-direction: column;
 }
 
 .share-buttons {
@@ -82,3 +88,6 @@
   justify-content: space-between;
 }
 
+.footer {
+  position: relative !important;
+}
