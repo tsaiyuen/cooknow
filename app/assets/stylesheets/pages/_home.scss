@@ -28,6 +28,10 @@
   max-height: 450px;
 }
 
+.image-small{
+  height: 400px;
+}
+
 .words {
   background-image: url("https://media.giphy.com/media/GIh3i0ds2RnOaNhXMT/giphy.gif");
   background-clip: text;
@@ -109,7 +113,7 @@ transition: 2s;
 
 .recipe-search {
   width: 88vw;
-  height: 75vh;
+  height: 96vh;
   background: #F6EEDF;
   display: flex;
 }
@@ -120,7 +124,7 @@ transition: 2s;
   max-width: 100%;
   max-height: 100%;
   object-fit: contain;
-  background: yellow;
+  background: $orange;
 } 
 
 .carousel-img-cont {
