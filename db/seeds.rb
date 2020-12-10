@@ -99,7 +99,7 @@ puts "Finished creating extra recipes"
 
 #DON'T DELETE USERS!
  puts "Creating users..."
- user1 = User.create(email:"cynthia@gmail.com", first_name:"Cynthia", last_name:"Tong", password:"123456", phone_number: "123123")
+ user1 = User.create(email:"cynthia@gmail.com", first_name:"Cyn", last_name:"Tong", password:"123456", phone_number: "123123")
  file1 = open('https://avatars3.githubusercontent.com/u/67703828?s=460&u=1e7825c8e63246413f8dd67ffab5ff9564911e81&v=4')
 #  file1 = open('https://avatars0.githubusercontent.com/u/67703828?v=4')
  user1.photo.attach(io: file1, filename: 'some-image1.jpg')
