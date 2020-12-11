@@ -17,7 +17,7 @@
             <% if user_signed_in? %>
               <% if policy(SavedRecipe.new(recipe_id: @recipe.id)).create? %>
                 <%= link_to saved_recipes_path(saved_recipe: {recipe_id: @recipe.id}), method: :post, class: 'btn btn-danger' do %>
-                   <i class="far fa-bookmark"> Save this recipe</i>
+                   <i class="far fa-bookmark"></i>
                  <% end %>
               <% end %>
             <% end %>
@@ -49,6 +49,7 @@
           </ol>
         </div>
       </div>
+      </div>
 
       <div class="recipe-video">
         <% if @recipe.video_url.present? %>
@@ -58,7 +59,7 @@
         <% end %>
       </div>
     </div>
-
+  
   <div class="share-buttons">
     <div class="share-buttons-text">
       <p>Share this recipe!</p>
@@ -76,6 +77,7 @@
       <a href="whatsapp://send?text=Check out this amazing recipe I found on Cook Now! https://cooknow.club/recipes/<%= @recipe.id %>" data-action="share/whatsapp/share">
         <i class="fab fa-whatsapp"></i>
       </a>
+    </div>
     </div>
 
     <div class="reviews-container">
@@ -125,12 +127,12 @@
                 <% end %>
               <% end %>
             </div>
-
           </div>
         <% end %>
       </div>
     </div>
   </div>
+
   <div class="footer">
     <div class="return-link">
       <%= link_to "Go back to recipes", recipes_path(ingredients: @recipe.ingredient_ids) %>
