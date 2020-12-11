@@ -1,134 +1,142 @@
-<div class="recipes-container">
-  <div class="recipe-banner" style="background-image: url(<%= @recipe.image %>);"></div>
-    <div class="header-container">
-      <div class="header-title">
-        <h1 class='recipeRed'> <%= @recipe.name %> </h1>
-        <%#<p>From < enter website > </p>%>
-      </div>
-      <div class="header-functions">
-        <div class="save-button">
-          <% if user_signed_in? %>
-            <% if policy(SavedRecipe.new(recipe_id: @recipe.id)).create? %>
-              <%= link_to saved_recipes_path(saved_recipe: {recipe_id: @recipe.id}), method: :post, class: 'btn btn-danger' do %>
-                 <i class="far fa-bookmark"> Save this recipe</i>
-               <% end %>
+<head>
+<% content_for :meta_title, "Make #{@recipe.name} on #{DEFAULT_META["meta_product_name"]}" %>
+<% content_for :meta_description, @recipe.description %>
+<% content_for :meta_image, @recipe.image %>
+</head>
+
+<body>
+  <div class="recipes-container">
+    <div class="recipe-banner" style="background-image: url(<%= @recipe.image %>);"></div>
+      <div class="header-container">
+        <div class="header-title">
+          <h1 class='recipeRed'> <%= @recipe.name %> </h1>
+          <%#<p>From < enter website > </p>%>s
+        </div>
+        <div class="header-functions">
+          <div class="save-button">
+            <% if user_signed_in? %>
+              <% if policy(SavedRecipe.new(recipe_id: @recipe.id)).create? %>
+                <%= link_to saved_recipes_path(saved_recipe: {recipe_id: @recipe.id}), method: :post, class: 'btn btn-danger' do %>
+                   <i class="far fa-bookmark"> Save this recipe</i>
+                 <% end %>
+              <% end %>
             <% end %>
-          <% end %>
+          </div>
         </div>
+      </div>
+
+    <div class="recipe-description-container">
+      <%= @recipe.description %>
+    </div>
+
+    <div class="d-flex recipe-details-container">
+      <div class="recipe-details-description">
+        <div class="recipe-sub">
+          <div>
+            <h2 class='catamaran'><%= "Ingredients" %></h2>
+            <% @recipe.ingredients.each do |i| %>
+              <li><%= i.name %></li>
+            <% end %>
+          </div>
+          <div>
+            <h2 class='catamaran'><%= "Instructions:" %></h2>
+            <% @recipe.instructions.each do |i|%>
+              <li><%= i %></li>
+            <% end %>
+          </div>
+        </div>
+      </div>
+
+      <div class="recipe-video">
+        <% if @recipe.video_url.present? %>
+          <video width="500" height="300" controls>
+            <source src=<%= @recipe.video_url %> type="video/mp4">
+          </video>
+        <% end %>
       </div>
     </div>
 
-  <div class="recipe-description-container">
-    <%= @recipe.description %>
-  </div>
-
-  <div class="d-flex recipe-details-container">
-    <div class="recipe-details-description">
-      <div class="recipe-sub">
-        <div>
-          <h2 class='catamaran'><%= "Ingredients" %></h2>
-          <% @recipe.ingredients.each do |i| %>
-            <li><%= i.name %></li>
-          <% end %>
-        </div>
-        <div>
-          <h2 class='catamaran'><%= "Instructions:" %></h2>
-          <% @recipe.instructions.each do |i|%>
-            <li><%= i %></li>
-          <% end %>
-        </div>
+    <div class="share-buttons">
+      <div class="share-buttons-text col-4">
+        <p>Share this recipe!</p>
+      </div>
+      <div class="share-buttons-icons col-8">
+        <a href="http://www.facebook.com/sharer.php?u=https://cooknow.club/recipes/<%= @recipe.id %>" target="_blank">
+          <i class="fab fa-facebook"></i>
+        </a>
+        <a href="https://twitter.com/share?url=https://cooknow.club/recipes/<%= @recipe.id %>&amp;text=Share%20this%20recipe!&amp;hashtags=joincooknow" target="_blank">
+          <i class="fab fa-twitter"></i>
+        </a>
+        <a href="mailto:?Subject=Check out this recipe from the Cook Now Club!&amp;Body=I%20saw%20this%20and%20thought%20of%20you!%20 https://cooknow.club/recipes/<%= @recipe.id %>">
+          <i class="fas fa-envelope"></i>
+        </a>
+        <a href="whatsapp://send?text=Check out this amazing recipe I found on Cook Now! https://cooknow.club/recipes/<%= @recipe.id %>" data-action="share/whatsapp/share">
+          <i class="fab fa-whatsapp"></i>
+        </a>
       </div>
     </div>
 
-    <div class="recipe-video">
-      <% if @recipe.video_url.present? %>
-        <video width="500" height="300" controls>
-          <source src=<%= @recipe.video_url %> type="video/mp4">
-        </video>
-      <% end %>
-    </div>
-  </div>
-
-  <div class="share-buttons">
-    <div class="share-buttons-text col-4">
-      <p>Share this recipe!</p>
-    </div>
-    <div class="share-buttons-icons col-8">
-      <a href="http://www.facebook.com/sharer.php?u=https://cooknow.club/recipes/<%= @recipe.id %>" target="_blank">
-        <i class="fab fa-facebook"></i>
-      </a>
-      <a href="https://twitter.com/share?url=https://cooknow.club/recipes/<%= @recipe.id %>&amp;text=Share%20this%20recipe!&amp;hashtags=joincooknow" target="_blank">
-        <i class="fab fa-twitter"></i>
-      </a>
-      <a href="mailto:?Subject=Check out this recipe from the Cook Now Club!&amp;Body=I%20saw%20this%20and%20thought%20of%20you!%20 https://cooknow.club/recipes/<%= @recipe.id %>">
-        <i class="fas fa-envelope"></i>
-      </a>
-      <a href="whatsapp://send?text=Check out this amazing recipe I found on Cook Now! https://cooknow.club/recipes/<%= @recipe.id %>" data-action="share/whatsapp/share">
-        <i class="fab fa-whatsapp"></i>
-      </a>
-    </div>
-  </div>
-
-  <div class="reviews-container">
-    <div class="reviews-button">
-      <h2 class='catamaran'>Reviews</h2>
-       <% if user_signed_in?%>
-        <p style="margin-top: 2vh;">
-          <%= link_to "Add a review!", new_recipe_review_path(@recipe), class: "btn btn-info" %>
-        </p>
+    <div class="reviews-container">
+      <div class="reviews-button">
+        <h2 class='catamaran'>Reviews</h2>
+         <% if user_signed_in?%>
+          <p style="margin-top: 2vh;">
+            <%= link_to "Add a review!", new_recipe_review_path(@recipe), class: "btn btn-info" %>
+          </p>
+        <% else %>
+          <p><%= "Sign in to leave a review" %></p>
+        <% end %>
+      </div>
+      <div class="review-summary">
+        Average Review:
+        <% if @detailed_rating.present?%>
+        <% @rating.times do %>
+          <i class="fas fa-lemon"></i>
+        <% end %>
+        (<%= @detailed_rating %> / 5 stars)
       <% else %>
-        <p><%= "Sign in to leave a review" %></p>
+        <p><em>Not yet reviewed<em></p>
       <% end %>
-    </div>
-    <div class="review-summary">
-      Average Review:
-      <% if @detailed_rating.present?%>
-      <% @rating.times do %>
-        <i class="fas fa-lemon"></i>
-      <% end %>
-      (<%= @detailed_rating %> / 5 stars)
-    <% else %>
-      <p><em>Not yet reviewed<em></p>
-    <% end %>
-    </div>
+      </div>
 
-    <div class="d-flex flex-wrap">
-      <% @recipe.reviews.each do |review| %>
-        <div class="review-card">
-          <div class="review-card-image">
-           <% if review.photo.attached? %>
-             <%= cl_image_tag review.photo.key, width: 450, height: 300, crop: :fill %>
-           <% end %>
-          </div>
-          <div class="review-card-details">
-            <p>By: <%= review.user.first_name %> <%= review.user.last_name %></p>
-            <p>
-              <% review.rating.times do %>
-                <i class="fas fa-lemon"></i>
+      <div class="d-flex flex-wrap">
+        <% @recipe.reviews.each do |review| %>
+          <div class="review-card">
+            <div class="review-card-image">
+             <% if review.photo.attached? %>
+               <%= cl_image_tag review.photo.key, width: 450, height: 300, crop: :fill %>
+             <% end %>
+            </div>
+            <div class="review-card-details">
+              <p>By: <%= review.user.first_name %> <%= review.user.last_name %></p>
+              <p>
+                <% review.rating.times do %>
+                  <i class="fas fa-lemon"></i>
+                <% end %>
+              </p>
+              <p> <%= review.comment %> </p>
+            </div>
+            <div class="review-card-delete">
+              <% if policy(review).destroy? %>
+                <%= link_to recipe_path(review), method: :delete, data: {confirm: "Are you sure?"}, class: "btn btn-body-color" do %>
+                  <i class="fas fa-trash-alt"></i>
+                <% end %>
               <% end %>
-            </p>
-            <p> <%= review.comment %> </p>
-          </div>
-          <div class="review-card-delete">
-            <% if policy(review).destroy? %>
-              <%= link_to recipe_path(review), method: :delete, data: {confirm: "Are you sure?"}, class: "btn btn-body-color" do %>
-                <i class="fas fa-trash-alt"></i>
-              <% end %>
-            <% end %>
-          </div>
+            </div>
 
-        </div>
-      <% end %>
+          </div>
+        <% end %>
+      </div>
     </div>
   </div>
-</div>
-<div class="footer">
-  <div class="return-link">
-    <%= link_to "Go back to recipes", recipes_path(ingredients: @recipe.ingredient_ids) %>
+  <div class="footer">
+    <div class="return-link">
+      <%= link_to "Go back to recipes", recipes_path(ingredients: @recipe.ingredient_ids) %>
+    </div>
+    <div class="footer-links">
+    </div>
+    <div class="footer-copyright">
+      These recipes are sourced from <a href="https://tasty.co/">Tasty</a>
+    </div>
   </div>
-  <div class="footer-links">
-  </div>
-  <div class="footer-copyright">
-    These recipes are sourced from <a href="https://tasty.co/">Tasty</a>
-  </div>
-</div>
+</body>
