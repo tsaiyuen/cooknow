@@ -1,0 +1,5 @@
+meta_product_name: "Cook Now Club"
+meta_title: "Cook Now Club - Ingredient-based recipe finder"
+meta_description: "Find recipes that only require what's currently in your fridge"
+meta_image: "food1.jpg" # should exist in `app/assets/images/`
+#twitter_account: "@product_twitter_account"   # required for Twitter Cards
