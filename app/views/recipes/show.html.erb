@@ -73,7 +73,7 @@
     <div class="reviews-button">
       <h2 class='catamaran'>Reviews</h2>
        <% if user_signed_in?%>
-        <p>
+        <p style="margin-top: 2vh;">
           <%= link_to "Add a review!", new_recipe_review_path(@recipe), class: "btn btn-info" %>
         </p>
       <% else %>

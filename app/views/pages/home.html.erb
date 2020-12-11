@@ -30,7 +30,7 @@
   </div>
 </div>
 
-<h1 class='inform'>How Does It Work?</h1>
+<h1 class='inform'>how does it work?</h1>
 
 <div class="info-container">
   <div class="info-box">
@@ -69,17 +69,20 @@
       </div>
     </div>
     <div class="search-input">
-      <h2 class='ubuntu'>Which Ingredients<br>Do You Have?</h2>
+      <h2 class='ubuntu'>which ingredients<br>do you have?</h2>
         <%# <div class="banner-search"> %>
+        <div class="flexrow">
           <%= form_tag recipes_path, method: :get do |f| %>
           <select class="js-example-theme-multiple" name="ingredients[]" multiple="multiple" style="width: 100%; margin-bottom: 2vh;" >
             <% @ingredients.each do |i| %>
             <option value=<%=i.id%>><%= i.name %></option>
             <% end %>
           </select>
-            <%= submit_tag "Search recipes", class: "btn btn-info btn-black" %>
-          <% end %>   
-        <%# </div> %>
+          <div>
+            <%= submit_tag "search recipes", class: "btn-black" %>
+          </div>
+          <% end %> 
+        </div>
   </div>
 </div>
 
