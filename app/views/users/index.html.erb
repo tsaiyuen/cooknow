@@ -3,41 +3,25 @@
     <h1 style="color: white; font-size: 5rem; padding-bottom: 50px; font-weight: 900;">greetings</h1>
   </div>
   <div class="profile">
-    <div class="avatar-profile">
+    <div class="">
       <% if current_user.photo.attached? %>
-        <%= cl_image_tag current_user.photo.key, width: 200, height: 200, crop: :fill, gravity: :face %>
-      <% end %>
+      <div class="profile-avatar" style="background-image: url('<%= cl_image_path current_user.photo.key, height: 200, width: 200, crop: :fill, gravity: :face %>')" >
+        <%= link_to edit_user_registration_path, class: "btn btn-body-color" do %>
+          <i class="fas fa-edit"></i>
+        <% end %>
+      </div>
+        <%#= cl_image_tag current_user.photo.key, width: 200, height: 200, crop: :fill, gravity: :face %>
     </div>
     <div class="welcome-header">
-      <h2><b>Chef <%= current_user.first_name %></b></h2>
-      <img src=<%= asset_path("knife.svg") %> class='recipe-img' style="height: 165px; transform: rotate(-135deg);margin-top: -100px; position: relative; top: 30px;">
+      <h2><b>Chef <%= current_user.first_name %></b></h2> 
+      <% end %>
+      <img src=<%= asset_path("knife.svg") %> class='recipe-img' style="height: 165px; transform: rotate(-135deg);margin-top: -100px; position: relative; top: 25px;">
     </div>
   </div>
 
 </div>
 
 <div class="body-container">
-  <div class="profile-info">
-    <h2>
-      Basic information
-      <%= link_to edit_user_registration_path, class: "btn btn-body-color" do %>
-        <i class="fas fa-edit"></i>
-      <% end %>
-    </h2>
-
-    <div>
-      <div class="detail-box">
-        <p><b>Full name</b> <%= current_user.first_name %> <%= current_user.last_name %></p>
-      </div>
-      <div class="detail-box">
-        <p><b>Phone</b> <%= current_user.phone_number %></p>
-      </div>
-      <div class="detail-box">
-        <p><b>Email Address</b> <%= current_user.email %></p>
-      </div>
-    </div>
-
-  </div>
 
   <div class="saved_recipes">
     <h2>Saved recipes:</h2>

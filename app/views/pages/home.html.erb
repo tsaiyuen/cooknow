@@ -16,13 +16,13 @@
   <div class="col2">
     <div id="carouselExampleSlidesOnly" class="carousel slide" data-ride="carousel">
       <div class="carousel-inner">
-       <div class="carousel-item active">
+       <div class="carousel-item active" data-interval="2000">
           <img class='carImg' src=<%= asset_path("pan.svg") %>>
        </div>
-       <div class="carousel-item">
+       <div class="carousel-item" data-interval="2000">
           <img class='carImg' src=<%= asset_path("pot.svg") %>>
        </div>
-       <div class="carousel-item">
+       <div class="carousel-item" data-interval="2000">
           <img class='carImg image-small' src=<%= asset_path("grill.svg") %>>
        </div>
       </div>
@@ -51,18 +51,16 @@
 <div class="recipe-container">
   <div class="recipe-search">
     <div class="recipe-images">
-      <div id="carouselExampleSlidesOnly" class="carousel slide" data-ride="carousel">
+      <div id="carouselExampleSlidesOnly" class="carousel slide carousel-fade" data-ride="carousel">
         <div class="carousel-inner">
-          <div class="carousel-item active">
+          <div class="carousel-item active" data-interval="3500">
              <%# another div with background image %>
-            <div carousel-img-cont>
-              <img src=<%= asset_path("food3.jpg") %> class='recipe-img'>
-            </div>
+            <img src=<%= asset_path("food3.jpg") %> class='recipe-img'>
           </div>
-          <div class="carousel-item">
+          <div class="carousel-item" data-interval="3500">
             <img src=<%= asset_path("food1.jpg") %> class='recipe-img'>
           </div>
-          <div class="carousel-item">
+          <div class="carousel-item" data-interval="3500">
             <img src=<%= asset_path("food4.jpg") %> class='recipe-img'>
           </div>
         </div>

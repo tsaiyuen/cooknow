@@ -29,21 +29,24 @@
       <%= @recipe.description %>
     </div>
 
-    <div class="d-flex recipe-details-container">
-      <div class="recipe-details-description">
-        <div class="recipe-sub">
-          <div>
-            <h2 class='catamaran'><%= "Ingredients" %></h2>
+  <div class="d-flex recipe-details-container">
+    <div class="recipe-details-description">
+      <div class="recipe-sub">
+        <div>
+          <h2 class='catamaran'><%= "Ingredients:" %></h2>
+          <ul class="ingredients-list">
             <% @recipe.ingredients.each do |i| %>
               <li><%= i.name %></li>
             <% end %>
-          </div>
-          <div>
-            <h2 class='catamaran'><%= "Instructions:" %></h2>
+          </ul>
+        </div>
+        <div>
+          <h2 class='catamaran'><%= "Instructions:" %></h2>
+          <ol>
             <% @recipe.instructions.each do |i|%>
               <li><%= i %></li>
             <% end %>
-          </div>
+          </ol>
         </div>
       </div>
 
@@ -56,24 +59,23 @@
       </div>
     </div>
 
-    <div class="share-buttons">
-      <div class="share-buttons-text col-4">
-        <p>Share this recipe!</p>
-      </div>
-      <div class="share-buttons-icons col-8">
-        <a href="http://www.facebook.com/sharer.php?u=https://cooknow.club/recipes/<%= @recipe.id %>" target="_blank">
-          <i class="fab fa-facebook"></i>
-        </a>
-        <a href="https://twitter.com/share?url=https://cooknow.club/recipes/<%= @recipe.id %>&amp;text=Share%20this%20recipe!&amp;hashtags=joincooknow" target="_blank">
-          <i class="fab fa-twitter"></i>
-        </a>
-        <a href="mailto:?Subject=Check out this recipe from the Cook Now Club!&amp;Body=I%20saw%20this%20and%20thought%20of%20you!%20 https://cooknow.club/recipes/<%= @recipe.id %>">
-          <i class="fas fa-envelope"></i>
-        </a>
-        <a href="whatsapp://send?text=Check out this amazing recipe I found on Cook Now! https://cooknow.club/recipes/<%= @recipe.id %>" data-action="share/whatsapp/share">
-          <i class="fab fa-whatsapp"></i>
-        </a>
-      </div>
+  <div class="share-buttons">
+    <div class="share-buttons-text">
+      <p>Share this recipe!</p>
+    </div>
+    <div class="share-buttons-icons">
+      <a href="http://www.facebook.com/sharer.php?u=https://cooknow.club/recipes/<%= @recipe.id %>" target="_blank">
+        <i class="fab fa-facebook"></i>
+      </a>
+      <a href="https://twitter.com/share?url=https://cooknow.club/recipes/<%= @recipe.id %>&amp;text=Share%20this%20recipe!&amp;hashtags=joincooknow" target="_blank">
+        <i class="fab fa-twitter"></i>
+      </a>
+      <a href="mailto:?Subject=Check out this recipe from the Cook Now Club!&amp;Body=I%20saw%20this%20and%20thought%20of%20you!%20 https://cooknow.club/recipes/<%= @recipe.id %>">
+        <i class="fas fa-envelope"></i>
+      </a>
+      <a href="whatsapp://send?text=Check out this amazing recipe I found on Cook Now! https://cooknow.club/recipes/<%= @recipe.id %>" data-action="share/whatsapp/share">
+        <i class="fab fa-whatsapp"></i>
+      </a>
     </div>
 
     <div class="reviews-container">
