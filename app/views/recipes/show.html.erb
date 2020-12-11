@@ -1,7 +1,7 @@
 <head>
-<% content_for :meta_title, "Make #{@recipe.name} on #{DEFAULT_META["meta_product_name"]}" %>
-<% content_for :meta_description, @recipe.description %>
-<% content_for :meta_image, @recipe.image %>
+  <% content_for :meta_title, "Make #{@recipe.name} on #{DEFAULT_META["meta_product_name"]}" %>
+  <% content_for :meta_description, @recipe.description %>
+  <% content_for :meta_image, @recipe.image %>
 </head>
 
 <body>
@@ -10,7 +10,7 @@
       <div class="header-container">
         <div class="header-title">
           <h1 class='recipeRed'> <%= @recipe.name %> </h1>
-          <%#<p>From < enter website > </p>%>s
+          <%#<p>From < enter website > </p>%>
         </div>
         <div class="header-functions">
           <div class="save-button">
